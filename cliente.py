@@ -12,7 +12,7 @@ class Cliente:
             raise ClienteError("Documento inválido")
 
         self.__nombre = nombre
-        self.__documento = documento
+        self.__documento = str(documento)
 
     def get_nombre(self):
         return self.__nombre
