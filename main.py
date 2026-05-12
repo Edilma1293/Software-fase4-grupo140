@@ -3,9 +3,9 @@ from servicio import ReservaSala, AlquilerEquipo, AsesoriaEspecializada
 from reserva import Reserva
 from excepciones import ClienteError, ServicioError, ReservaError
 
-def registrar_log(error):
+def registrar_log(mensaje):
     with open("logs.txt", "a") as archivo:
-        archivo.write(str(error) + "\n")
+        archivo.write(str(mensaje) + "\n")
 
 print(" SISTEMA SOFTWARE FJ ")
 
@@ -44,12 +44,13 @@ while True:
                 servicio = AsesoriaEspecializada("Asesoria", 60000)
 
             else:
-                print("Servicio inválido")
-                continue
+                raise ServicioError("Servicio inválido")
+                
 
             # RESERVA
             reserva = Reserva(cliente, servicio, horas)
             reserva.confirmar()
+            registrar_log("Reserva creada exitosamente")
 
             print("\n✔ RESERVA EXITOSA")
             print("Cliente:", cliente)
@@ -63,6 +64,20 @@ while True:
         else:
             print("Opción inválida")
 
-    except Exception as e:
+    except ClienteError as e:
         registrar_log(e)
-        print(" Error ", e)
+        print("Error de cliente:", e)
+    
+    except ServicioError as e:
+        registrar_log(e)
+        print("Error de servicio:", e)
+    
+    except ReservaError as e:
+        registrar_log(e)
+        print("Error de reserva:", e)
+
+    except ValueError:
+        print("Error: las horas deben ser un número válido")
+
+
+
