@@ -48,12 +48,12 @@ class AlquilerEquipo(Servicio):
         return total - (total * descuento)
 
 
-# SERVICIO 3: ASESORÍA
+# SERVICIO 3: ASESORIA
 
 class AsesoriaEspecializada(Servicio):
 
     def calcular_costo(self, horas, descuento=0):
         if horas <= 0:
-            raise ServicioError("Horas inválidas")
+            raise ServicioError("Horas invalidas")
         total = (self._tarifa * horas) * 1.15 # impuesto de 15 %
         return total - (total * descuento)
