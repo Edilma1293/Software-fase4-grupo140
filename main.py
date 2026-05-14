@@ -7,8 +7,38 @@ def registrar_log(mensaje):
     with open("logs.txt", "a") as archivo:
         archivo.write(str(mensaje) + "\n")
 
-print(" SISTEMA SOFTWARE FJ ")
+def pruebas_automaticas():
+    print("\n EJECUTANDO 10 PRUEBAS AUTOMÁTICAS \n")
 
+    pruebas = [
+        ("Cliente válido", lambda: Cliente("Ana Maria Gomez", "1234338129")),
+        ("Cliente inválido", lambda: Cliente("", "1234341480")),
+        ("Servicio válido", lambda: ReservaSala("Sala VIP", 50000)),
+        ("Servicio inválido", lambda: ReservaSala("Sala VIP", -100)),
+        ("Reserva válida", lambda: Reserva(Cliente("Luis Sepulveda", "62828840"), ReservaSala("Sala 1", 40000), 2 )),
+        ("Reserva inválida", lambda: Reserva( Cliente("Carlos Vargas", "1098285448"), ReservaSala("Sala 2", 30000),  -1 )),
+        ("Equipo válido", lambda: AlquilerEquipo("Portatil", 30000)),
+        ("Asesoría válida", lambda: AsesoriaEspecializada("Excel", 60000)),
+        ("Documento inválido", lambda: Cliente("Maria Fernanda", "")),
+        ("Reserva válida", lambda: Reserva( Cliente("Laura Salome", "1099662534"),AsesoriaEspecializada("Inteligencia Artificial", 60000),3))]
+
+    for i, (descripcion, prueba) in enumerate(pruebas, 1):
+        try:
+            prueba()
+            registrar_log(f"Prueba {i}: {descripcion} exitosa")
+
+        except (ClienteError, ServicioError, ReservaError) as e:
+            registrar_log(f"Prueba {i}: Error -> {e}")
+            print(f"Prueba {i}: Error -> {e}")
+
+        else:
+            print(f"Prueba {i}: Exitosa")
+
+        finally:
+            print("Prueba finalizada\n")
+
+print(" SISTEMA SOFTWARE FJ ")
+pruebas_automaticas()
 while True:
     try:
         print("\n MENÚ PRINCIPAL ")
@@ -76,8 +106,10 @@ while True:
         registrar_log(e)
         print("Error de reserva:", e)
 
-    except ValueError:
+    except ValueError as e:
+        registrar_log(e)
         print("Error: las horas deben ser un número válido")
+        
 
 
 
