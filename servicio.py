@@ -23,34 +23,37 @@ class Servicio(ABC):
         return self._tarifa
 
     @abstractmethod
-    def calcular_costo(self, horas):
+    def calcular_costo(self, horas, descuento=0):
         pass
 
 # SERVICIO 1: SALA
 
 class ReservaSala(Servicio):
 
-    def calcular_costo(self, horas):
+    def calcular_costo(self, horas, descuento=0):
         if horas <= 0:
             raise ServicioError("Horas invalidas")
-        return self._tarifa * horas
+        total = self._tarifa * horas
+        return total - (total * descuento)
 
 
 # SERVICIO 2: EQUIPOS
 
 class AlquilerEquipo(Servicio):
 
-    def calcular_costo(self, horas):
+    def calcular_costo(self, horas, descuento=0):
         if horas <= 0:
             raise ServicioError("Horas invalidas")
-        return (self._tarifa * horas) + 2000  # cargo fijo
+        total = (self._tarifa * horas) + 2000 # cargo fijo
+        return total - (total * descuento)
 
 
 # SERVICIO 3: ASESORÍA
 
 class AsesoriaEspecializada(Servicio):
 
-    def calcular_costo(self, horas):
+    def calcular_costo(self, horas, descuento=0):
         if horas <= 0:
             raise ServicioError("Horas inválidas")
-        return (self._tarifa * horas) * 1.15  # impuesto 15%
+        total = (self._tarifa * horas) * 1.15 # impuesto de 15 %
+        return total - (total * descuento)
