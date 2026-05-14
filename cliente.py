@@ -5,11 +5,11 @@ class Cliente:
 
         # Validamos el nombre
         if not nombre or not nombre.strip():
-            raise ClienteError("El nombre no puede estar vacío")
+            raise ClienteError("El nombre no puede estar vacio")
 
-        # Validamos el documento (solo números y mínimo 5 dígitos)
+        # Validamos el documento (solo numeros y minimo 5 digitos)
         if not str(documento).isdigit() or len(str(documento)) < 5:
-            raise ClienteError("Documento inválido")
+            raise ClienteError("Documento invalido")
 
         self.__nombre = nombre
         self.__documento = str(documento)
