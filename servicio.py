@@ -8,10 +8,10 @@ class Servicio(ABC):
     def __init__(self, nombre, tarifa):
 
         if not nombre or not nombre.strip():
-            raise ServicioError("El nombre del servicio no puede estar vacío")
+            raise ServicioError("El nombre del servicio no puede estar vacio")
 
         if not isinstance(tarifa, (int, float)) or tarifa <= 0:
-            raise ServicioError("La tarifa debe ser un número mayor a cero")
+            raise ServicioError("La tarifa debe ser un numero mayor a cero")
 
         self._nombre = nombre
         self._tarifa = tarifa
@@ -32,7 +32,7 @@ class ReservaSala(Servicio):
 
     def calcular_costo(self, horas):
         if horas <= 0:
-            raise ServicioError("Horas inválidas")
+            raise ServicioError("Horas invalidas")
         return self._tarifa * horas
 
 
@@ -42,7 +42,7 @@ class AlquilerEquipo(Servicio):
 
     def calcular_costo(self, horas):
         if horas <= 0:
-            raise ServicioError("Horas inválidas")
+            raise ServicioError("Horas invalidas")
         return (self._tarifa * horas) + 2000  # cargo fijo
 
 
