@@ -11,16 +11,16 @@ def pruebas_automaticas():
     print("\n EJECUTANDO 10 PRUEBAS AUTOMÁTICAS \n")
 
     pruebas = [
-        ("Cliente válido", lambda: Cliente("Ana Maria Gomez", "1234338129")),
-        ("Cliente inválido", lambda: Cliente("", "1234341480")),
-        ("Servicio válido", lambda: ReservaSala("Sala VIP", 50000)),
-        ("Servicio inválido", lambda: ReservaSala("Sala VIP", -100)),
-        ("Reserva válida", lambda: Reserva(Cliente("Luis Sepulveda", "62828840"), ReservaSala("Sala 1", 40000), 2 )),
-        ("Reserva inválida", lambda: Reserva( Cliente("Carlos Vargas", "1098285448"), ReservaSala("Sala 2", 30000),  -1 )),
-        ("Equipo válido", lambda: AlquilerEquipo("Portatil", 30000)),
-        ("Asesoría válida", lambda: AsesoriaEspecializada("Excel", 60000)),
-        ("Documento inválido", lambda: Cliente("Maria Fernanda", "")),
-        ("Reserva válida", lambda: Reserva( Cliente("Laura Salome", "1099662534"),AsesoriaEspecializada("Inteligencia Artificial", 60000),3))]
+        ("Cliente valido", lambda: Cliente("Ana Maria Gomez", "1234338129")),
+        ("Cliente invalido", lambda: Cliente("", "1234341480")),
+        ("Servicio valido", lambda: ReservaSala("Sala VIP", 50000)),
+        ("Servicio invalido", lambda: ReservaSala("Sala VIP", -100)),
+        ("Reserva valida", lambda: Reserva(Cliente("Luis Sepulveda", "62828840"), ReservaSala("Sala 1", 40000), 2 )),
+        ("Reserva invalida", lambda: Reserva( Cliente("Carlos Vargas", "1098285448"), ReservaSala("Sala 2", 30000),  -1 )),
+        ("Equipo valido", lambda: AlquilerEquipo("Portatil", 30000)),
+        ("Asesoría valida", lambda: AsesoriaEspecializada("Excel", 60000)),
+        ("Documento invalido", lambda: Cliente("Maria Fernanda", "")),
+        ("Reserva valida", lambda: Reserva( Cliente("Laura Salome", "1099662534"),AsesoriaEspecializada("Inteligencia Artificial", 60000),3))]
 
     for i, (descripcion, prueba) in enumerate(pruebas, 1):
         try:
@@ -74,7 +74,7 @@ while True:
                 servicio = AsesoriaEspecializada("Asesoria", 60000)
 
             else:
-                raise ServicioError("Servicio inválido")
+                raise ServicioError("Servicio invalido")
                 
 
             # RESERVA
