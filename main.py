@@ -18,7 +18,7 @@ def pruebas_automaticas():
         ("Reserva valida", lambda: Reserva(Cliente("Luis Sepulveda", "62828840"), ReservaSala("Sala 1", 40000), 2 )),
         ("Reserva invalida", lambda: Reserva( Cliente("Carlos Vargas", "1098285448"), ReservaSala("Sala 2", 30000),  -1 )),
         ("Equipo valido", lambda: AlquilerEquipo("Portatil", 30000)),
-        ("Asesoría valida", lambda: AsesoriaEspecializada("Excel", 60000)),
+        ("Asesoria valida", lambda: AsesoriaEspecializada("Excel", 60000)),
         ("Documento invalido", lambda: Cliente("Maria Fernanda", "")),
         ("Reserva valida", lambda: Reserva( Cliente("Laura Salome", "1099662534"),AsesoriaEspecializada("Inteligencia Artificial", 60000),3))]
 
