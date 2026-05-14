@@ -13,8 +13,11 @@ class Reserva:
             raise ReservaError("El servicio no puede ser nulo")
 
         # validamos las horas (tipo + valor)
-        if not isinstance(horas, (int, float)) or horas <= 0:
-            raise ReservaError("Las horas deben ser un numero mayor a cero")
+        try:
+            if not isinstance(horas, (int, float)) or horas <= 0:
+                raise ValueError("Horas invalidas")
+        except ValueError as e:
+            raise ReservaError("Las horas deben ser un numero mayor a cero") from e
 
         self.cliente = cliente
         self.servicio = servicio
