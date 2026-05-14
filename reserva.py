@@ -14,7 +14,7 @@ class Reserva:
 
         # validamos las horas (tipo + valor)
         if not isinstance(horas, (int, float)) or horas <= 0:
-            raise ReservaError("Las horas deben ser un número mayor a cero")
+            raise ReservaError("Las horas deben ser un numero mayor a cero")
 
         self.cliente = cliente
         self.servicio = servicio
@@ -30,7 +30,7 @@ class Reserva:
 
     def cancelar(self):
         if self.estado == "Cancelada":
-            raise ReservaError("La reserva ya está cancelada")
+            raise ReservaError("La reserva ya esta cancelada")
         self.estado = "Cancelada"
 
     # PROCESO PRINCIPAL
