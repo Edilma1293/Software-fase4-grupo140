@@ -1,8 +1,11 @@
-class ClienteError(Exception):
+class ErrorSoftwareFJ(Exception):
+    pass
+    
+class ClienteError(ErrorSoftwareFJ):
     pass
 
-class ServicioError(Exception):
+class ServicioError(ErrorSoftwareFJ):
     pass
 
-class ReservaError(Exception):
+class ReservaError(ErrorSoftwareFJ):
     pass
